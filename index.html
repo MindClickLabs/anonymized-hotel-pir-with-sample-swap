@@ -341,6 +341,11 @@
 .rx-pbl i.s{background:var(--green);} .rx-pbl i.f{background:#8fc3b3;}
 .rx-pbk th,.rx-pbk td{font-size:11.5px;color:var(--muted);border-top:0;padding-top:0;}
 .rx-pbk .rx-pb-b{position:relative;display:inline-block;top:1px;height:10px;margin-right:6px;}
+.rx-bid-warn{margin:0 14px 10px;padding:10px 12px;border-radius:10px;background:#fbefe0;border:1px dashed #d9a35b;color:#7a4a0c;font-size:12.5px;}
+.rx-bid-warn b{color:#7a4a0c;}
+.rx-bwrap{position:relative;}
+.rx-bwrap::after{content:"SAMPLE";position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(48px,9vw,96px);font-weight:800;letter-spacing:.15em;color:rgba(122,74,12,.08);transform:rotate(-12deg);pointer-events:none;}
+.rx-btbl td{opacity:.85;}
 .rx-bid-note{margin:0;padding:8px 14px 12px;font-size:11.5px;color:var(--muted);}
 @media(prefers-reduced-motion:reduce){.rx-bid>summary .chev{transition:none;}}
 </style>
@@ -924,9 +929,9 @@ document.addEventListener('click',function(e){var b=e.target.closest('.sa-btn');
         <div class="tblwrap rx-cwrap"><table class="rx-ctbl" id="rx-ctbl"></table></div>
 
         <details class="rx-bid" id="rx-bid">
-          <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg><b>Bid details</b><span class="rx-bid-tag">Sample data</span><span class="rx-bid-sub">Pricing against budget and logistics, once bids come in</span></summary>
-          <div class="tblwrap"><table class="rx-btbl" id="rx-btbl"></table></div>
-          <p class="rx-bid-note">Placeholder figures to show the layout. Real bid pricing, freight and lead times replace these as vendors respond.</p>
+          <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg><b>Bid details</b><span class="rx-bid-tag">Illustrative only · not real bids</span><span class="rx-bid-sub">Shows how bid pricing and logistics will appear once vendors respond</span></summary>
+          <p class="rx-bid-warn" role="note"><b>Sample layout, not real data.</b> No bids have been received for this item. Every price, freight cost, lead time and term below is a made-up placeholder.</p>
+          <div class="tblwrap rx-bwrap"><table class="rx-btbl" id="rx-btbl"></table></div>
         </details>
         <script>
         document.addEventListener('DOMContentLoaded',function(){
@@ -959,7 +964,7 @@ document.addEventListener('click',function(e){var b=e.target.closest('.sa-btn');
           sel.addEventListener('change',render); render();
         });
         </script>
-        <div class="concentration">Supplier answers from the Mindclick recommendation export for each vendor's product. Where an option covers several product lines with different answers, each line is shown. Grey text marks no data or not yet addressed; "Factory Data Needed" means the supplier left a factory answer blank (factory, carbon emissions, fair labor practices); "No data" means another answer was left blank. "Select" applies that vendor in the scenario builder above.</div>
+        <div class="concentration">Supplier answers from the Mindclick recommendation export for each vendor's product. Where an option covers several product lines with different answers, each line is shown. Grey text marks no data or not yet addressed; "Factory Data Needed" means we need the vendor to confirm where this product is being manufactured for this specific project, so the right factory's data (carbon emissions, energy, water and waste, fair labor practices) can be applied; "No data" means another answer was left blank. "Select" applies that vendor in the scenario builder above.</div>
       </div>
     </details>
     <div class="concentration">Score = the sum, across every product in the space, of (product surface area ÷ the space's total surface area) × the product's overall score; unrated products score 0. This reproduces Mindclick's scores (71 overall, 78 Guestrooms, 63 Public Space). Price tier ($ to $$$$) is each vendor's typical price per sq ft of surface area relative to the market for the same product type, from historical Mindclick projects (purchase orders and bids); not a quote. $ is under 0.75× the market, $$ 0.75–1.10×, $$$ 1.10–1.50×, $$$$ over 1.50×; shown only where at least two projects back it. SKUs that share the same vendor options are grouped into one item, because the recommendation export gives surface area per vendor product family rather than per SKU; where an option spans product families, its score is area-weighted. Source: Mindclick.</div>
